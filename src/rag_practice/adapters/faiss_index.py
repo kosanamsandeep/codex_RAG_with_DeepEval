@@ -54,6 +54,7 @@ class FaissInMemoryIndex(VectorIndex):
                     text=chunk.text,
                     metadata=chunk.metadata,
                     score=float(score),
+                    tables=chunk.tables,
                 )
             )
         return results

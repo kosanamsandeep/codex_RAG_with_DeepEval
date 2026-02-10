@@ -6,6 +6,7 @@ import streamlit as st
 from dotenv import load_dotenv
 
 from rag_practice.adapters.container import build_ingest_pipeline, build_query_pipeline, load_env
+from rag_practice.domain.text_utils import table_to_text
 
 
 def initialize_session_state():
@@ -20,7 +21,7 @@ def initialize_session_state():
         st.session_state.citations = {}
 
 
-def load_index(persist_dir: str, no_persist: bool) -> tuple:
+def load_index(persist_dir: str, no_persist: bool, enable_rerank: bool) -> tuple:
     """Load or build the index and return ingest + query pipeline."""
     ingest = build_ingest_pipeline()
     persist_path = Path(persist_dir)
@@ -43,8 +44,65 @@ def load_index(persist_dir: str, no_persist: bool) -> tuple:
             except Exception as e:
                 st.warning(f"Could not save index: {e}")
 
-    query_uc = build_query_pipeline(index=ingest.index)  # type: ignore[arg-type]
+    query_uc = build_query_pipeline(index=ingest.index, enable_rerank=enable_rerank)  # type: ignore[arg-type]
     return ingest, query_uc
+
+
+def _chunk_display_text(chunk) -> str:
+    text = (chunk.text or "").strip()
+    if text:
+        return text
+    if getattr(chunk, "tables", None):
+        rendered = "\n\n".join(
+            table_to_text(t) for t in chunk.tables if table_to_text(t)
+        ).strip()
+        return rendered or "[Table chunk - no text]"
+    return "[No text]"
+
+
+def _extract_date_query(text: str) -> str | None:
+    import re
+
+    # Match dd-mm-yyyy or dd/mm/yyyy
+    m = re.search(r"\b(\d{2})[-/](\d{2})[-/](\d{4})\b", text)
+    if not m:
+        return None
+    return f"{m.group(1)}-{m.group(2)}-{m.group(3)}"
+
+
+def _normalize_header(h: str) -> str:
+    return "".join(ch for ch in h.lower() if ch.isalnum())
+
+
+def _rows_for_date(chunks: list, date_key: str) -> list[tuple[dict, object]]:
+    rows: list[tuple[dict, object]] = []
+    for chunk in chunks:
+        tables = getattr(chunk, "tables", None) or []
+        for table in tables:
+            headers = list(table.headers)
+            norm_headers = [_normalize_header(h) for h in headers]
+            date_idx = None
+            for i, nh in enumerate(norm_headers):
+                if "date" == nh or nh.endswith("date"):
+                    date_idx = i
+                    break
+            for row in table.rows:
+                # Try explicit DATE column
+                date_val = None
+                if date_idx is not None and date_idx < len(headers):
+                    date_val = row.get(headers[date_idx])
+                if date_val is None:
+                    date_val = row.get("DATE") or row.get("Date") or row.get("date")
+                # Fallback: first column might be date
+                if date_val is None and headers:
+                    date_val = row.get(headers[0])
+                if not date_val:
+                    continue
+                # Normalize date value to dd-mm-yyyy if possible
+                date_val = str(date_val).strip().replace("/", "-")
+                if date_val == date_key:
+                    rows.append((row, chunk))
+    return rows
 
 
 def format_answer_with_citations(answer: str, retrieved_chunks: list) -> tuple[str, dict]:
@@ -54,12 +112,13 @@ def format_answer_with_citations(answer: str, retrieved_chunks: list) -> tuple[s
     """
     citations = {}
     for idx, chunk in enumerate(retrieved_chunks, start=1):
+        score = getattr(chunk, "score", None)
         citations[idx] = {
             "chunk_id": chunk.chunk_id,
-            "text": chunk.text[:300] + "..." if len(chunk.text) > 300 else chunk.text,
+            "text": _chunk_display_text(chunk)[:300] + "..." if len(_chunk_display_text(chunk)) > 300 else _chunk_display_text(chunk),
             "source": chunk.metadata.source_id,
             "page": chunk.metadata.page,
-            "score": chunk.score,
+            "score": score,
         }
 
     # Simple approach: append citations list after answer
@@ -71,12 +130,14 @@ def display_citations(citations: dict):
     """Display citations in an expandable format."""
     st.subheader("📚 Sources")
     for idx, citation in citations.items():
-        with st.expander(f"[{idx}] {citation['source']} - Page {citation['page']} (Score: {citation['score']:.3f})"):
+        score = citation.get("score")
+        score_text = f"{score:.3f}" if isinstance(score, (int, float)) else "n/a"
+        with st.expander(f"[{idx}] {citation['source']} - Page {citation['page']} (Score: {score_text})"):
             st.write(f"**Chunk ID**: {citation['chunk_id']}")
             st.write(f"**Text**: {citation['text']}")
             col1, col2 = st.columns(2)
             with col1:
-                st.metric("Similarity Score", f"{citation['score']:.3f}")
+                st.metric("Similarity Score", score_text)
             with col2:
                 st.metric("Source Page", citation['page'])
             # Optional: link to document
@@ -127,6 +188,7 @@ def main():
             filter_page_max = st.number_input("Max page", value=999, min_value=0)
             filter_chunk_type = st.selectbox("Chunk type", ["All", "Text", "Table"])
         
+        enable_rerank = st.checkbox("Enable reranker", value=False)
         show_raw_chunks = st.checkbox("Show raw retrieved chunks", value=False)
 
         if st.button("🔄 Reload Index"):
@@ -136,8 +198,12 @@ def main():
 
     # Load index on first run or if settings change
     if st.session_state.ingest is None or st.session_state.query_uc is None:
+        index_path = Path(persist_dir) / "faiss.index"
+        meta_path = Path(persist_dir) / "chunks.pkl"
+        if not index_path.exists() or not meta_path.exists():
+            st.warning("First-time data load: building index from documents...")
         with st.spinner("Loading vector index..."):
-            ingest, query_uc = load_index(persist_dir, no_persist)
+            ingest, query_uc = load_index(persist_dir, no_persist, enable_rerank=enable_rerank)
             st.session_state.ingest = ingest
             st.session_state.query_uc = query_uc
         st.success("✅ Index loaded!")
@@ -192,36 +258,78 @@ def main():
             answer = "❌ No relevant documents found after filtering. Please adjust your filters or try a different question."
             citations = {}
         else:
-            # Display result count
-            st.info(f"📊 Retrieved {len(retrieved)} results (filtered from {len(st.session_state.query_uc.execute(prompt, top_k=top_k))})")
-            
-            # Display raw chunks if requested
-            if show_raw_chunks:
-                with st.expander("📋 Raw Retrieved Chunks"):
-                    for idx, chunk in enumerate(retrieved, start=1):
-                        st.write(f"**Chunk {idx}**: {chunk.chunk_id}")
-                        st.write(chunk.text[:200] + "..." if chunk.text else "[Table chunk - no text]")
-                        st.write(f"Page {chunk.metadata.page} | Score: {chunk.score:.3f} | Type: {chunk.metadata.extra.get('chunk_type')}")
-                        st.divider()
-
-            # Generate answer with OpenAI
-            with st.spinner("✍️ Generating answer..."):
-                try:
-                    from langchain_openai import ChatOpenAI
-                    from langchain_core.messages import SystemMessage, HumanMessage
-
-                    llm = ChatOpenAI(model="gpt-4", temperature=0.7)
-                    context = "\n\n".join([f"[Source {i}]: {chunk.text}" for i, chunk in enumerate(retrieved, start=1)])
-                    system_msg = SystemMessage(content="You are a helpful assistant answering questions based on provided documents. Use citations [1], [2], etc. when referencing specific sources.")
-                    user_msg = HumanMessage(content=f"Question: {prompt}\n\nDocuments:\n{context}")
-                    response = llm.invoke([system_msg, user_msg])
-                    answer = response.content
-                except Exception as e:
-                    answer = f"Error generating answer: {e}"
-
-            # Format answer with citations
-            formatted_answer, citations = format_answer_with_citations(answer, retrieved)
-
+            # Deterministic table extraction for date queries
+            date_key = _extract_date_query(prompt)
+            # Prefer scanning all table chunks from the index for complete coverage
+            all_chunks = getattr(st.session_state.ingest, "index", None)
+            all_chunks = getattr(all_chunks, "_chunks", []) if all_chunks is not None else []
+            table_chunks = [c for c in all_chunks if c.metadata.extra.get("chunk_type") == "table"]
+            # Scope to sources seen in retrieval to avoid exploding sources list
+            retrieved_sources = {c.metadata.source_id for c in retrieved}
+            if retrieved_sources:
+                table_chunks = [c for c in table_chunks if c.metadata.source_id in retrieved_sources]
+            # Respect optional source filter if provided
+            if filter_source:
+                table_chunks = [c for c in table_chunks if filter_source in c.metadata.source_id]
+            # Fallback to retrieved table chunks if index scan is empty
+            if not table_chunks:
+                table_chunks = [c for c in retrieved if c.metadata.extra.get("chunk_type") == "table"]
+            if date_key and table_chunks:
+                matched_rows = _rows_for_date(table_chunks, date_key)
+                if matched_rows:
+                    lines = [f"Found {len(matched_rows)} transactions on {date_key}:"]
+                    used_chunks = []
+                    for idx, (row, src_chunk) in enumerate(matched_rows, start=1):
+                        row_text = "; ".join([f"{k}: {v}" for k, v in row.items()])
+                        lines.append(f"{idx}. {row_text}")
+                        used_chunks.append(src_chunk)
+                    answer = "\n".join(lines)
+                    # Cite only chunks that contributed matching rows
+                    unique_chunks = []
+                    seen_ids = set()
+                    for c in used_chunks:
+                        if c.chunk_id in seen_ids:
+                            continue
+                        seen_ids.add(c.chunk_id)
+                        unique_chunks.append(c)
+                    formatted_answer, citations = format_answer_with_citations(answer, unique_chunks)
+                else:
+                    answer = f"No transactions found on {date_key} in the retrieved tables."
+                    formatted_answer, citations = format_answer_with_citations(answer, table_chunks)
+            else:
+                # Display result count
+                st.info(f"📊 Retrieved {len(retrieved)} results (filtered from {len(st.session_state.query_uc.execute(prompt, top_k=top_k))})")
+                
+                # Display raw chunks if requested
+                if show_raw_chunks:
+                    with st.expander("📋 Raw Retrieved Chunks"):
+                        for idx, chunk in enumerate(retrieved, start=1):
+                            st.write(f"**Chunk {idx}**: {chunk.chunk_id}")
+                            disp = _chunk_display_text(chunk)
+                            st.write(disp[:200] + "..." if len(disp) > 200 else disp)
+                            st.write(f"Page {chunk.metadata.page} | Score: {chunk.score:.3f} | Type: {chunk.metadata.extra.get('chunk_type')}")
+                            st.divider()
+    
+                # Generate answer with OpenAI
+                with st.spinner("✍️ Generating answer..."):
+                    try:
+                        from langchain_openai import ChatOpenAI
+                        from langchain_core.messages import SystemMessage, HumanMessage
+    
+                        llm = ChatOpenAI(model="gpt-4", temperature=0.7)
+                        context = "\n\n".join(
+                            [f"[Source {i}]: {_chunk_display_text(chunk)}" for i, chunk in enumerate(retrieved, start=1)]
+                        )
+                        system_msg = SystemMessage(content="You are a helpful assistant answering questions based on provided documents. Use citations [1], [2], etc. when referencing specific sources.")
+                        user_msg = HumanMessage(content=f"Question: {prompt}\n\nDocuments:\n{context}")
+                        response = llm.invoke([system_msg, user_msg])
+                        answer = response.content
+                    except Exception as e:
+                        answer = f"Error generating answer: {e}"
+    
+                # Format answer with citations
+                formatted_answer, citations = format_answer_with_citations(answer, retrieved)
+    
         # Add to chat history
         st.session_state.messages.append({
             "role": "assistant",

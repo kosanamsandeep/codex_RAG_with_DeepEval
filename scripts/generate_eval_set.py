@@ -7,6 +7,7 @@ import pickle
 from typing import Iterable
 
 from rag_practice.domain.models import DocumentChunk
+from rag_practice.domain.text_utils import chunk_to_query_text
 
 
 def load_chunks(metadata_path: Path) -> list[DocumentChunk]:
@@ -15,20 +16,7 @@ def load_chunks(metadata_path: Path) -> list[DocumentChunk]:
 
 
 def make_query_from_chunk(chunk: DocumentChunk, max_chars: int = 200) -> str:
-    text = (chunk.text or "").strip()
-    if not text:
-        # fall back to metadata labels if available
-        try:
-            meta = chunk.metadata
-            return getattr(meta, "title", getattr(meta, "source_id", chunk.chunk_id))
-        except Exception:
-            return chunk.chunk_id
-    # take first non-empty line or truncate
-    for line in text.splitlines():
-        s = line.strip()
-        if s:
-            return s[:max_chars]
-    return text[:max_chars]
+    return chunk_to_query_text(chunk, max_chars=max_chars)
 
 
 def write_jsonl(items: Iterable[dict], path: Path) -> None:

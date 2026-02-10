@@ -2,13 +2,13 @@
 DOCUMENT CHUNKS ANALYSIS
 ====================================================================================================
 
-Total chunks: 8
+Total chunks: 81
 
 
 ====================================================================================================
 SOURCE: basic-text.pdf
 ====================================================================================================
-Total chunks from this source: 2
+Total chunks from this source: 6
 
 
 ----------------------------------------------------------------------------------------------------
@@ -18,33 +18,11 @@ Chunk ID: basic-text.pdf:p1:1
 Page: 1
 Section: None
 Image References: []
-Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1'}
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'text'}
 
 Text Content:
 Sample Document for PDF Testing
 Introduction
-This is a simple document created to test basic PDF functionality. It includes various text formatting
-options to ensure proper rendering in PDF readers.
-Text Formatting Examples
-1. Bold text is used for emphasis.
-2. Italic text can be used for titles or subtle emphasis.
-3. Strikethrough is used to show deleted text.
-Lists
-Here's an example of an unordered list:
-Item 1
-Item 2
-Item 3
-And here's an ordered list:
-1. First item
-2. Second item
-3. Third item
-Quote
-This is an example of a block quote. It can be used to highlight important information or
-citations.
-Table
-Header 1 Header 2 Header 3
-Row 1, Col 1 Row 1, Col 2 Row 1, Col 3
-Row 2, Col 1 Row 2, Col 2 Row 2, Col 3
 
 ----------------------------------------------------------------------------------------------------
 CHUNK #2
@@ -53,20 +31,70 @@ Chunk ID: basic-text.pdf:p1:2
 Page: 1
 Section: None
 Image References: []
-Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1'}
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'text'}
 
 Text Content:
+Lists
+Here's an example of an unordered list:
+Item 1
+Item 2
+Item 3
+
+----------------------------------------------------------------------------------------------------
+CHUNK #3
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:3
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+Quote
+This is an example of a block quote. It can be used to highlight important information or
+citations.
 Table
-Header 1 Header 2 Header 3
-Row 1, Col 1 Row 1, Col 2 Row 1, Col 3
-Row 2, Col 1 Row 2, Col 2 Row 2, Col 3
-This document demonstrates various formatting options that should translate well to PDF format.
-This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resources.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #4
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:table1
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #5
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:table2
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #6
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:table3
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
 
 ====================================================================================================
 SOURCE: image-doc.pdf
 ====================================================================================================
-Total chunks from this source: 6
+Total chunks from this source: 11
 
 
 ----------------------------------------------------------------------------------------------------
@@ -76,11 +104,9 @@ Chunk ID: image-doc.pdf:p1:1
 Page: 1
 Section: None
 Image References: [ImageRef(path='data\\processed\\images\\image-doc_p1_1.jpeg', page=1, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '1'}
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '1', 'chunk_type': 'text'}
 
 Text Content:
-Sample Team
-Prepared By:
 sample-files.com
 Image-Heavy
 PDF
@@ -89,76 +115,1487 @@ Website:
 ----------------------------------------------------------------------------------------------------
 CHUNK #2
 ----------------------------------------------------------------------------------------------------
-Chunk ID: image-doc.pdf:p2:1
-Page: 2
+Chunk ID: image-doc.pdf:p1:table1
+Page: 1
 Section: None
-Image References: [ImageRef(path='data\\processed\\images\\image-doc_p2_1.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_2.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_3.jpeg', page=2, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '2'}
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '1', 'chunk_type': 'table'}
 
 Text Content:
-Nature Landscape
-A beautiful landscape showcasing the wonders of
-nature.
-This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
 
 ----------------------------------------------------------------------------------------------------
 CHUNK #3
 ----------------------------------------------------------------------------------------------------
-Chunk ID: image-doc.pdf:p3:1
-Page: 3
+Chunk ID: image-doc.pdf:p2:1
+Page: 2
 Section: None
-Image References: [ImageRef(path='data\\processed\\images\\image-doc_p3_1.jpeg', page=3, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '3'}
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p2_1.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_2.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_3.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '2', 'chunk_type': 'text'}
 
 Text Content:
-City Skyline
-A high-resolution image of a bustling city skyline at
-night.
+nature.
 This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
 
 ----------------------------------------------------------------------------------------------------
 CHUNK #4
 ----------------------------------------------------------------------------------------------------
-Chunk ID: image-doc.pdf:p4:1
-Page: 4
+Chunk ID: image-doc.pdf:p2:table1
+Page: 2
 Section: None
-Image References: [ImageRef(path='data\\processed\\images\\image-doc_p4_1.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_2.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_3.jpeg', page=4, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '4'}
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p2_1.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_2.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_3.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '2', 'chunk_type': 'table'}
 
 Text Content:
-Wildlife Photography
-An up-close capture of wildlife in their natural habitat.
-This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
 
 ----------------------------------------------------------------------------------------------------
 CHUNK #5
 ----------------------------------------------------------------------------------------------------
-Chunk ID: image-doc.pdf:p5:1
-Page: 5
+Chunk ID: image-doc.pdf:p3:1
+Page: 3
 Section: None
-Image References: [ImageRef(path='data\\processed\\images\\image-doc_p5_1.jpeg', page=5, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p5_2.jpeg', page=5, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '5'}
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '3', 'chunk_type': 'text'}
 
 Text Content:
-Space Exploration
-An artistic representation of space exploration and
-galaxies.
+night.
 This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
 
 ----------------------------------------------------------------------------------------------------
 CHUNK #6
 ----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p3:table1
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '3', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #7
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p4:table1
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p4_1.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_2.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_3.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '4', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #8
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p5:1
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p5_1.jpeg', page=5, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p5_2.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+galaxies.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #9
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p5:table1
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p5_1.jpeg', page=5, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p5_2.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #10
+----------------------------------------------------------------------------------------------------
 Chunk ID: image-doc.pdf:p6:1
 Page: 6
 Section: None
 Image References: [ImageRef(path='data\\processed\\images\\image-doc_p6_1.jpeg', page=6, caption=None)]
-Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '6'}
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '6', 'chunk_type': 'text'}
 
 Text Content:
-Underwater World
-A breathtaking view of marine life deep beneath the
 ocean.
 This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #11
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p6:table1
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '6', 'chunk_type': 'table'}
+
+Text Content:
+
+
+====================================================================================================
+SOURCE: Statement_2026MTH01_473540197_unlocked.pdf
+====================================================================================================
+Total chunks from this source: 64
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #1
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:1
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+169002/76691539-20980/1-7/RESTS/02-02
+
+----------------------------------------------------------------------------------------------------
+CHUNK #2
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:2
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+HYDERABAD
+
+----------------------------------------------------------------------------------------------------
+CHUNK #3
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:3
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+01-01-2026  
+UPI/Dasari Rag/9347513543-2@y/kids toys/IDFC 
+FIRST/135058853156/YBLda6e7c43a66f4e78b6d9b52d9e9f7
+36c/
+200.00 2,435.48
+01-01-2026  
+UPI/MR NUTENKI/9030090514@ybl/31st Dec 
+m/StandardC/503272631624/YBL8320df9289cc4ab99f9235c0
+593fb428
+1,091.00  3,526.48
+01-01-2026  
+UPI/DEEVANA DE/8688110456@ibl/Payment fr/State 
+Bank/052581280791/IBL70e9bea2a817429c83a2a368229f42
+6c
+1,091.00  4,617.48
+01-01-2026  
+UPI/KOSANAM SA/9700464090-2@y/Payment fr/AXIS 
+BANK/794542272894/YBLc56e269829164e479d6169fccb686
+9f3
+
+----------------------------------------------------------------------------------------------------
+CHUNK #4
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:4
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+02-01-2026  
+UPI/ZEPTO MARK/zeptonow.bdpg1/Paid via C/KOTAK 
+MAHI/636802580656/crdbee5a09723e743cf9161643c1adc2f6
+7
+238.00 28,789.48
+03-01-2026  
+UPI/GOPU BHARA/9000388638-2@a/Payment fr/UNION 
+BANK/829303252520/AXL7e326e888e8f4207b4705e9e298ac
+213
+20,000.00  48,789.48
+03-01-2026  
+UPI/BOLLAM RAV/9440645627@ybl/Payment fr/State 
+Bank/237565992143/YBL9e7f75e8e33f48d8826744e6141c93
+9f
+200.00 48,589.48
+03-01-2026  
+UPI/Rakesh Sin/paytmqr6nk2xq@/Payment fr/YES 
+BANKL/106850531397/YBLe61504952f7947e488a7ee9f4371
+6cef
+70.00 48,519.48
+03-01-2026  
+UPI/RAVI KACHA/paytmqr6f27pk@/Payment fr/YES 
+BANKL/671449028736/YBL822d3d165e9145a8a7fe82fe5ec83
+cac
+10.00 48,509.48
+03-01-2026  
+UPI/RAJESH YAD/9989435184@ybl/Payment fr/HDFC 
+BANK/130625442837/YBLd910956697b0438aa4ad68794bf7
+8e48
+1,090.00  49,599.48
+
+----------------------------------------------------------------------------------------------------
+CHUNK #5
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:5
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'text'}
+
+Text Content:
+BANK/130625442837/YBLd910956697b0438aa4ad68794bf7
+8e48
+1,090.00  49,599.48
+03-01-2026  
+UPI/Dasari Rag/9347513543-2@y/Payment fr/IDFC 
+FIRST/584102928210/YBLf6731e022a8b4b64a7e980b4ad1d5
+7fd
+1,090.00  50,689.48
+03-01-2026  
+UPI/Dasari Rag/9347513543-2@a/Payment fr/IDFC 
+FIRST/450870678692/AXL7a00c78fcfdc4697a85bf5c2a93d5b
+8c
+1,650.00  52,339.48
+04-01-2026  
+UPI/Mr Thaduri/paytmqr6hrd7s@/Payment fr/YES 
+BANKL/027036529819/YBLf5df4405665c428cb0702fb65791a
+4f9
+280.00 52,059.48
+04-01-2026  
+UPI/Zepto Mark/zepto.payu@axi/Paid via C/AXIS 
+BANK/637005872921/PPPL26704881538040126120830695a
+0ae6/
+344.00 51,715.48
+04-01-2026  
+UPI/Swiggy Lim/swiggy.stores@/Pay for In/AXIS 
+BANK/185023256649/AXB70dc517909c04189aea485cae2cc8
+bce/
+
+----------------------------------------------------------------------------------------------------
+CHUNK #6
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:table1
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #7
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:table2
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #8
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:table3
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #9
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p1:table4
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '1', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #10
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:1
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'text'}
+
+Text Content:
+05-01-2026  
+UPI/T MOHAN RE/7738899245@ybl/Payment fr/HDFC 
+BANK/050819956604/YBL0e64d3e45b5e43d494d13b3bd86b
+873d
+3,553.00  55,046.48
+05-01-2026  
+UPI/9391966178/9391966178@pty/Payment fr/Kotak 
+Mahi/200838055571/YBL52ec2b3c7dd244d48f01d811feb434
+b7
+400.00 54,646.48
+05-01-2026  
+UPI/ETIKALA CH/8466909738-3@i/Payment fr/State 
+Bank/252014818948/YBLc03ff740e9ad410f8ef98aa090c6ce9
+0
+60.00 54,586.48
+05-01-2026  
+UPI/PENDYALA C/pendyalachandr/Payment fr/UNION 
+BANK/720951739962/YBLfcc5de5e13b54e699959a40b458ffd
+e9
+70.00 54,516.48
+06-01-2026  
+ACH/Indian Clearing 
+Corp/ICIC7020108230007795/0000MU6HQT332MKF3C26005
+1193826
+8,000.00 46,516.48
+06-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/600662168112/GPG2026010693397608673031329779
+9880/
+10,000.00 36,516.48
+06-01-2026
+
+----------------------------------------------------------------------------------------------------
+CHUNK #11
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:2
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'text'}
+
+Text Content:
+BANK/600662168112/GPG2026010693397608673031329779
+9880/
+10,000.00 36,516.48
+06-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/218786815762/YBLd3e0a0e1a1e84b858cb9657a55725
+500
+25,000.00 11,516.48
+06-01-2026  
+UPI/ETIKALA CH/8466909738-3@i/Payment fr/State 
+Bank/522023803829/YBL95c47c16f1914b6db74a77f5985e15
+1d
+60.00 11,456.48
+07-01-2026  
+UPI/ZEPTO MARK/pinelabs.10388/Paid via C/HDFC 
+BANK/637305359579/crdcc0befcf9671495385c3d2300e64f81
+4/
+388.00 11,068.48
+07-01-2026  
+UPI/NOBROKER T/nobrokertechno/Payment fr/AXIS  
+BANK/593867522809/YBLbd62f0c899af4ebcb3672fe7adf858
+86
+
+----------------------------------------------------------------------------------------------------
+CHUNK #12
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:3
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'text'}
+
+Text Content:
+07-01-2026  
+UPI/THOGARI NA/9515225606-2@a/Payment fr/HDFC 
+BANK/095388191245/AXL0603baca4c774c59ac533da1c693f
+db7
+200.00  6,854.48
+08-01-2026  
+UPI/Google Pla/playstore@axis/MandateExe/AXIS 
+BANK/568359220086/AXI07cb8bc6000e4943aec3069d00ca6
+96b/
+59.00 6,795.48
+08-01-2026  
+UPI/ETIKALA CH/8466909738-3@a/Payment fr/State 
+Bank/403659714791/YBL7b59efaa71ac4050b56d4d6eee6d0d
+6b
+60.00 6,735.48
+08-01-2026  
+UPI/MADHAVI BU/paytmqr6ub7ic@/Payment fr/YES 
+BANKL/946171456288/YBL116168015f9440cc8a7856c2a4a8
+0ed8
+40.00 6,695.48
+09-01-2026  
+UPI/BSNL BILLD/bsnl.billdesk@/Pay/HDFC 
+BANK/265021066910/YBL5c46151af76648d7b8e22ddabfaa1
+4ec/
+36.00 6,659.48
+09-01-2026  
+UPI/KOSANAM SA/9700464090-2@y/Payment fr/AXIS 
+BANK/776350798598/YBL17ec6c42ebc74b2d85254d3619024
+e3e
+50,000.00  56,659.48
+09-01-2026
+
+----------------------------------------------------------------------------------------------------
+CHUNK #13
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:4
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'text'}
+
+Text Content:
+BANK/776350798598/YBL17ec6c42ebc74b2d85254d3619024
+e3e
+50,000.00  56,659.48
+09-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/382829616155/GPG2026010952499699634755203600
+3262/
+10,000.00 46,659.48
+09-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/737764566679/GPG2026010953181274631444388819
+9615/
+10,000.00 36,659.48
+09-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/254386955819/GPG2026010905888985289328920222
+9344/
+5,000.00 31,659.48
+09-01-2026  
+UPI/TM INVESTM/tminvestment.c/Payment fr/HDFC 
+BANK/004449949161/YBL20986290192345848a0587e652b7
+5eb2/
+1,261.80 30,397.68
+09-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/393908643114/YBL99b07be8c7294821b4d0ddc5746cd
+232
+2,000.00 28,397.68
+09-01-2026
+
+----------------------------------------------------------------------------------------------------
+CHUNK #14
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:5
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'text'}
+
+Text Content:
+Bank/393908643114/YBL99b07be8c7294821b4d0ddc5746cd
+232
+2,000.00 28,397.68
+09-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/306330049447/YBLb783f874073b4d57a70a858113b2f7
+35
+700.00 27,697.68
+09-01-2026  
+UPI/Usha mulpu/paytm.s1g7apq@/Payment fr/YES 
+BANKP/399126315306/YBL5fbb3a4f37354409b320894561c9
+9d5d
+
+----------------------------------------------------------------------------------------------------
+CHUNK #15
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:table1
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #16
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:table2
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #17
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p2:table3
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p2_1.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '2', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #18
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:1
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'text'}
+
+Text Content:
+09-01-2026  
+UPI/MANNE NITH/nithinkumar466/Payment fr/State 
+Bank/078125092467/YBL4b7589d601af424d8fcf0bc24b1886
+d2
+30.00 27,037.68
+09-01-2026  
+UPI/NARASIMHUL/paytmqr6bm5vt@/Payment fr/YES 
+BANKL/184171383482/YBLf888861f77e146aa8e1852562326
+ac01
+80.00 26,957.68
+09-01-2026  
+UPI/ETIKALA CH/8466909738-3@a/Payment fr/State 
+Bank/172711350709/YBLa49c8ac8b0ed4187b137cb3298556
+d24
+40.00 26,917.68
+10-01-2026  
+ACH/Indian Clearing 
+Corp/ICIC7020108230007795/0000GJLQJZP8536SAE2600905
+53417
+5,000.00 21,917.68
+10-01-2026  
+UPI/SAI KEERTH/7989123589-5@y/Payment fr/BANK OF 
+BA/113684791791/YBL27f303b5db3947a49b99aaec8aa4466
+7
+90.00 21,827.68
+10-01-2026  
+UPI/KOSANAM KR/915417599@axl/Payment fr/Kotak 
+Mahi/588959961004/AXL3babf78e806b492fa29378cc5e1c69
+14
+2,500.00  24,327.68
+10-01-2026
+
+----------------------------------------------------------------------------------------------------
+CHUNK #19
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:2
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'text'}
+
+Text Content:
+Mahi/588959961004/AXL3babf78e806b492fa29378cc5e1c69
+14
+2,500.00  24,327.68
+10-01-2026  
+UPI/ZEPTO MARK/pinelabs.10388/Paid via C/HDFC 
+BANK/637618910741/crd26a4170df831441da1743c4e77197c
+0a/
+117.00 24,210.68
+10-01-2026  
+UPI/SMS KITCHE/10002112180000/Payment fr/IDBI 
+BANK/669510473886/YBL691541e897ef4f9b9f257a7f16560a
+9b/
+
+----------------------------------------------------------------------------------------------------
+CHUNK #20
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:3
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'text'}
+
+Text Content:
+10-01-2026  
+UPI/BHIM KUMAR/paytm.s1fmci2@/Payment fr/YES 
+BANKP/663965261214/YBLc60d84b9044f4b5ca6a13447ec9a
+5359
+8.00 23,700.68
+11-01-2026  
+UPI/MARAMANA Y/9000129929@ybl/Payment fr/CANARA 
+BAN/278542536339/YBL2efb96154a9a4991addd7a76e37a80
+eb
+20.00 23,680.68
+11-01-2026  
+UPI/SUHASINI S/gpay-112422796/Payment fr/AXIS 
+BANK/705835430471/YBLec4bc52b6fc04876aef9f45004449a
+4f/
+99.00 23,581.68
+11-01-2026  
+UPI/ZEPTO MARK/zeptomarketpla/NO REMARKS/AXIS 
+BANK/174959683580/UPI444b79adc7f053c6b48387bfcd32d9
+a2/
+242.00 23,339.68
+12-01-2026  
+UPI/MITHU KUMA/9346529734mith/Payment fr/BANK OF 
+IN/853412802000/YBLc7334634a2324584aa640ba619b691b
+e
+351.00 22,988.68
+12-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/726641548975/GPG2026011284435206823865504636
+8915/
+5,000.00 17,988.68
+
+----------------------------------------------------------------------------------------------------
+CHUNK #21
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:4
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'text'}
+
+Text Content:
+BANK/726641548975/GPG2026011284435206823865504636
+8915/
+5,000.00 17,988.68
+12-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/334327423909/GPG2026011264672271474210753908
+2852/
+5,000.00 12,988.68
+12-01-2026  
+UPI/M S YASHWA/6301433837@ybl/Payment fr/UNION 
+BANK/480479203574/YBL11b29eec7b444ea788f2952fe4c1fb
+4d
+1,500.00 11,488.68
+12-01-2026  
+UPI/BHATI DINE/paytmqr59myh7@/Payment fr/YES 
+BANKL/355601999118/YBLf3081023d5cf43adbd08dcabc5e30
+83f
+540.00 10,948.68
+13-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/746094134499/YBL15992a745cda4ad3ab274c69e8b5ff
+18
+10,000.00 948.68
+13-01-2026  
+UPI/Usha mulpu/paytm.s1g7b1s@/Payment fr/YES 
+BANKP/686744239531/YBL8222451a35d047b78a124d8581c
+8dfe2
+
+----------------------------------------------------------------------------------------------------
+CHUNK #22
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:5
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'text'}
+
+Text Content:
+13-01-2026  
+UPI/Swiggy Ltd/swiggyupi@axb/Pay for In/AXIS 
+BANK/175939852846/AXB55b11543d2d941dd9fad4f908897
+9109/
+521.00 19,499.68
+13-01-2026  
+UPI/MOHAMMED A/mohammadabdula/Payment fr/FEDERAL 
+BA/894230917205/YBL59eea9ea8d544e3c879821ef50641b3
+9
+30.00 19,469.68
+14-01-2026  
+UPI/THANIKELLA/tvskiran2@ybl/Payment fr/HDFC 
+BANK/080760188390/YBLe62ea145604a40c5875a42712aa9
+659b/
+21.00 19,448.68
+14-01-2026  
+UPI/TAAZA KITC/paytm.s1iwz5m@/Payment fr/YES 
+BANKP/677175748478/YBL8fd73a9ed9e34dc7a33214424134
+c8ac
+
+----------------------------------------------------------------------------------------------------
+CHUNK #23
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:table1
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #24
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:table2
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #25
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:table3
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #26
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p3:table4
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '3', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #27
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:1
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+14-01-2026  
+UPI/TAAZA KITC/paytm.s1iwz5m@/Payment fr/YES 
+BANKP/920402172046/YBLd9e61691047e44ccae4889f72652
+f813
+
+----------------------------------------------------------------------------------------------------
+CHUNK #28
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:2
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+15-01-2026  
+UPI/BABY SAROJ/paytm.s1umiby@/Payment fr/YES 
+BANKP/796596636476/YBL7d578c1587de45c59889449a937
+63b10
+50.00 18,430.68
+16-01-2026  
+UPI/NETFLIX CO/netflixupi.pay/Monthly au/HDFC 
+BANK/102474791532/HDF485041C156447133E063EBEEE20
+AEE26/
+199.00 18,231.68
+16-01-2026  
+UPI/GANJAYOLU/ganjoylatirupa/Payment fr/BANK OF 
+BA/663159800230/YBL517c18a412d949a7b445f14a8ff65a8d
+/
+45.00 18,186.68
+17-01-2026  
+UPI/Zepto Mark/zepto.payu@axi/NO REMARKS/AXIS 
+BANK/210055140331/PPPL26895015804170126210040696b
+ab20/
+130.00 18,056.68
+18-01-2026  
+UPI/MR DIY/mrdiy.42928950/Generating/HDFC 
+BANK/602626210312/PLUTUSDQR000000000000000011575
+22832/
+472.00 17,584.68
+18-01-2026  
+UPI/AVENUE FOO/avenuefoodplaz/Generating/HDFC 
+BANK/790346228246/PLUTUSDQR000000000000000011579
+51236/
+56.00 17,528.68
+
+----------------------------------------------------------------------------------------------------
+CHUNK #29
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:3
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+UPI/AVENUE FOO/avenuefoodplaz/Generating/HDFC 
+BANK/790346228246/PLUTUSDQR000000000000000011579
+51236/
+56.00 17,528.68
+19-01-2026  
+UPI/MINUMULA R/minumula.raju1/Payment fr/UNION 
+BANK/526200851676/YBLc71b9a6d43c1421db10265df9ca09
+c82
+75,000.00  92,528.68
+19-01-2026  
+UPI/ALIYA JABE/mdhydershai@yb/Payment fr/UNION 
+BANK/508988721594/YBLb973afa9c91641058c3c7be25dc80
+232
+3,200.00 89,328.68
+19-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/011332886219/GPG2026011925779876001837171235
+9057/
+8,000.00 81,328.68
+19-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/076640182987/GPG2026011909912679763549042043
+3569/
+6,000.00 75,328.68
+19-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/681834833096/GPG2026011973787065549690605363
+4739/
+5,000.00 70,328.68
+
+----------------------------------------------------------------------------------------------------
+CHUNK #30
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:4
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+BANK/681834833096/GPG2026011973787065549690605363
+4739/
+5,000.00 70,328.68
+19-01-2026  
+UPI/UIDAI/uidai726685.rz/UIDAI Upda/AIRTEL 
+PAY/601914349311/AIR1S5fovYz3w177kpT2196703548QPA
+Y02/
+75.00 70,253.68
+19-01-2026  
+UPI/UIDAI/uidai726685.rz/UIDAI Upda/AIRTEL 
+PAY/601914665880/AIR1S5g9x1H4ubJ2aQT6179580243QPA
+Y02/
+75.00 70,178.68
+20-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/159018081692/GPG2026012001802569406964030825
+4591/
+12,000.00 58,178.68
+20-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/984422443901/GPG2026012088907139217681273977
+1610/
+9,000.00 49,178.68
+20-01-2026  
+UPI/AXIS MAX L/paytm-65817519/OidMMM1801/YES 
+BANKL/602008329801/PAYTM6012080373173335962920260
+12001
+223.54 48,955.14
+20-01-2026  
+UPI/Mutual Fun/groww.iccl2.br/Paid Via E/ICICI
+
+----------------------------------------------------------------------------------------------------
+CHUNK #31
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:5
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+12001
+223.54 48,955.14
+20-01-2026  
+UPI/Mutual Fun/groww.iccl2.br/Paid Via E/ICICI 
+Bank/541424074277/GPG2026012036201220128968784484
+0504
+6,000.00 42,955.14
+21-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/270112808185/GPG2026012172931796878241046518
+7093/
+5,000.00 37,955.14
+21-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/552362343175/GPG2026012132010679663867854213
+7773/
+3,000.00 34,955.14
+21-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/177427068700/GPG2026012170018176512315125701
+9357/
+2,000.00 32,955.14
+21-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/993869267223/GPG2026012174683012426385120685
+4382/
+3,000.00 29,955.14
+21-01-2026  
+UPI/ETIKALA CH/8466909738-3@y/Payment fr/State
+
+----------------------------------------------------------------------------------------------------
+CHUNK #32
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:6
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'text'}
+
+Text Content:
+4382/
+3,000.00 29,955.14
+21-01-2026  
+UPI/ETIKALA CH/8466909738-3@y/Payment fr/State 
+Bank/769093394116/YBLa46495d344c24f5cb6deed0aa84f89
+8c
+
+----------------------------------------------------------------------------------------------------
+CHUNK #33
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:table1
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #34
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:table2
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #35
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p4:table3
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p4_1.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '4', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #36
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:1
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+21-01-2026  
+UPI/Neela Sand/paytmqr6u2w8w@/Payment fr/YES 
+BANKL/083617933242/YBLdee8847171b74a66b2f9aa094846
+e08e
+84.00 29,811.14
+22-01-2026  
+ACH/Indian Clearing 
+Corp/ICIC7020108230007795/0000FJEE52OGPJVPQZ2602102
+24108
+5,000.00 24,811.14
+22-01-2026  
+ACH/Indian Clearing 
+Corp/ICIC7020108230007795/0000ZU1TDBC1RHT8KB260210
+237759
+5,000.00 19,811.14
+22-01-2026  
+UPI/MINUMULA R/9849467394@axl/Payment fr/State 
+Bank/689478738213/AXLf43baf3e6b654f21af82aac3833211
+d9
+
+----------------------------------------------------------------------------------------------------
+CHUNK #37
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:2
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+23-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/213581079982/YBL413aa0fdcafb4f17aed1d3d4f8d8afa
+8
+8,000.00 36,706.14
+23-01-2026  
+UPI/PENDYALA C/pendyalachandr/Payment fr/UNION 
+BANK/600081106535/YBL0b0527e2b1304744a076d8620050f
+eba
+90.00 36,616.14
+23-01-2026  
+UPI/Kvr genera/paytmqr60y3u5@/Payment fr/YES 
+BANKL/824424191059/YBL0cda12a79737484c8c211d71f752
+0427
+30.00 36,586.14
+23-01-2026  
+UPI/SRI SAI GA/gpay-112630722/Payment fr/AXIS 
+BANK/213789087818/YBL5fad8f312a084584be7c43d20a02f8
+2c/
+180.00 36,406.14
+23-01-2026  
+UPI/Kvr genera/paytmqr60y3u5@/Payment fr/YES 
+BANKL/678244622194/YBL937a520e9bae465c9959b5113840
+a813
+10.00 36,396.14
+24-01-2026  
+UPI/COUNTER NO/Vyapar.1727211/Payment fr/HDFC 
+BANK/237524538324/YBL56d070aee79b4ba2ab5cfef807dbe
+132/
+270.00 36,126.14
+
+----------------------------------------------------------------------------------------------------
+CHUNK #38
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:3
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+UPI/COUNTER NO/Vyapar.1727211/Payment fr/HDFC 
+BANK/237524538324/YBL56d070aee79b4ba2ab5cfef807dbe
+132/
+270.00 36,126.14
+24-01-2026  
+UPI/National H/nhai@rxaxis/AnnualPass/AXIS  
+BANK/373534000951/YBL7150d254277e4e9799d5a9182297
+0363/
+3,000.00 33,126.14
+24-01-2026  
+UPI/KOKA PRAVA/paytmqr6xicep@/Payment fr/YES 
+BANKL/952671778578/YBLbe2abc3989e64502a6d6f8b21830
+9db1
+50.00 33,076.14
+24-01-2026  
+UPI/THOGARI NA/9515225606-2@y/Payment fr/HDFC 
+BANK/114132429892/YBL34aa8b98a3f349408e98ad9d4b65c
+a91/
+3,000.00 30,076.14
+26-01-2026  
+ACH/Indian Clearing 
+Corp/ICIC7020108230007795/0000OJEFI38I2RFQYB26025012
+2447
+
+----------------------------------------------------------------------------------------------------
+CHUNK #39
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:4
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+27-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/969070017546/GPG2026012721990214778829057181
+5761/
+8,000.00 42,076.14
+27-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/546401046895/GPG2026012782425608667398041526
+0451/
+10,000.00 32,076.14
+27-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/660426749567/GPG2026012796773556814160690819
+2302/
+5,000.00 27,076.14
+27-01-2026  
+UPI/MUTUAL FUN/groww.iccl1.br/Paid Via E/HDFC 
+BANK/546238370023/GPG2026012762515140010692594059
+7752/
+7,000.00 20,076.14
+27-01-2026  
+UPI/PAVITHRA P/paytmqr6u3cop@/Payment fr/YES 
+BANKL/223993241278/YBLed760e8a409e4d5bb817cc51fe92
+d071
+270.00 19,806.14
+27-01-2026  
+UPI/HOTEL SREE/Vyapar.1739217/Payment fr/HDFC 
+BANK/209048317255/YBLd75f5db5bf6b4dd1ab29d986f9d10
+751/
+
+----------------------------------------------------------------------------------------------------
+CHUNK #40
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:5
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+27-01-2026  
+UPI/HOTEL SREE/Vyapar.1739217/Payment fr/HDFC 
+BANK/209048317255/YBLd75f5db5bf6b4dd1ab29d986f9d10
+751/
+25.00 19,781.14
+27-01-2026  
+UPI/PAVITHRA P/paytmqr6u3cop@/Payment fr/YES 
+BANKL/974439527919/YBL844808485859408696327768267
+32d25
+
+----------------------------------------------------------------------------------------------------
+CHUNK #41
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:6
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'text'}
+
+Text Content:
+28-01-2026  
+UPI/Bharti Air/airtel121@hdfc/PrepaidRec/HDFC 
+BANK/091875009422/YBLaed262de6ac84a1f848090440e128
+10b/
+
+----------------------------------------------------------------------------------------------------
+CHUNK #42
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:table1
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #43
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:table2
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #44
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:table3
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #45
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:table4
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #46
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p5:table5
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p5_1.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '5', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #47
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:1
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'text'}
+
+Text Content:
+28-01-2026  
+UPI/MOHAMMED A/paytmqr6pyivs@/Payment fr/YES 
+BANKL/306473875043/YBL27e241ac7e0a4c26b20ecba98b5f
+c5b4
+
+----------------------------------------------------------------------------------------------------
+CHUNK #48
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:2
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'text'}
+
+Text Content:
+29-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/945853807047/YBLdfe8202ee8af4417a3f1a40b5543d0f
+9
+2,000.00 6,498.63
+29-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/040124215386/YBLcb09d1ce0c49499ca43efa135d9979
+6a
+6,000.00 498.63
+29-01-2026  
+UPI/KOSANAM SA/9700464090-2@y/Payment fr/AXIS 
+BANK/277671626528/YBL5d0ba3b0962d42db88d918e75e25
+79b6
+30,000.00  30,498.63
+29-01-2026  
+UPI/Motilal Os/motilal.rzp1.b/PayviaRazo/ICICI 
+Bank/648642314084/YBLdbcc4ce407414d9ea77b44fbde3eed
+5e
+8,000.00 22,498.63
+29-01-2026  
+UPI/Nethetla J/paytmqr6vcod8@/Payment fr/YES 
+BANKL/622080992266/YBLa00b99ef4c654a70932177edcc7e
+eb58
+35.00 22,463.63
+29-01-2026  
+UPI/ETIKALA CH/8466909738-3@y/Payment fr/State 
+Bank/809081603326/YBL3def2450dd704cb1a98c8462e76beb
+b0
+60.00 22,403.63
+
+----------------------------------------------------------------------------------------------------
+CHUNK #49
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:3
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'text'}
+
+Text Content:
+UPI/ETIKALA CH/8466909738-3@y/Payment fr/State 
+Bank/809081603326/YBL3def2450dd704cb1a98c8462e76beb
+b0
+60.00 22,403.63
+29-01-2026  
+UPI/Neela Sand/paytmqr6u2w8w@/Payment fr/YES 
+BANKL/050972673261/YBL1ee144638eff4a86acb7fd0f1cb2c2
+80
+84.00 22,319.63
+30-01-2026  
+UPI/GOLLA LAXM/9885408656@ibl/Payment fr/ICICI 
+Bank/575473134268/IBL47c754dc907e4f19ac1dc01e37cb963
+0
+1,500.00  23,819.63
+30-01-2026  
+UPI/ETIKALA CH/8466909738-3@y/Payment fr/State 
+Bank/781520292210/YBL0e2dc4c412164d8391763c871d492
+433
+
+----------------------------------------------------------------------------------------------------
+CHUNK #50
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:4
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'text'}
+
+Text Content:
+Sincerely,
+
+----------------------------------------------------------------------------------------------------
+CHUNK #51
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:table1
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #52
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:table2
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #53
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:table3
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #54
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p6:table4
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '6', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #55
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:1
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'text'}
+
+Text Content:
+https://www.icicibank.com/notice-board
+
+----------------------------------------------------------------------------------------------------
+CHUNK #56
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:2
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'text'}
+
+Text Content:
+capacity.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #57
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:3
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'text'}
+
+Text Content:
+department.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #58
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:4
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'text'}
+
+Text Content:
+www.icicibank.com
+
+----------------------------------------------------------------------------------------------------
+CHUNK #59
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:5
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'text'}
+
+Text Content:
+SR244554715
+Page 7 of 7 M-76691539-20980
+
+----------------------------------------------------------------------------------------------------
+CHUNK #60
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:table1
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #61
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:table2
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #62
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:table3
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #63
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:table4
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'table'}
+
+Text Content:
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #64
+----------------------------------------------------------------------------------------------------
+Chunk ID: Statement_2026MTH01_473540197_unlocked.pdf:p7:table5
+Page: 7
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\Statement_2026MTH01_473540197_unlocked_p7_1.jpeg', page=7, caption=None)]
+Extra Metadata: {'source_id': 'Statement_2026MTH01_473540197_unlocked.pdf', 'page': '7', 'chunk_type': 'table'}
+
+Text Content:
+
 
 
 ====================================================================================================

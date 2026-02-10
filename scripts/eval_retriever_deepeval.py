@@ -177,6 +177,10 @@ def main():
     parser.add_argument("--no-persist", action="store_true", help="Skip loading/saving index (forces fresh ingest)")
     parser.add_argument("--queries", help="Path to queries JSONL file (query_id, query)")
     parser.add_argument("--qrels", help="Path to qrels JSONL file (query_id, relevant_ids)")
+    parser.add_argument("--rerank", action="store_true", help="Enable lightweight reranker")
+    parser.add_argument("--rerank-weight", type=float, default=0.35, dest="rerank_weight", help="Rerank weight (0-1)")
+    parser.add_argument("--rerank-multiplier", type=int, default=3, dest="rerank_multiplier", help="Pre-retrieval multiplier")
+    parser.add_argument("--diagnose", type=int, default=0, help="Print worst N queries by top-1 hit")
     args = parser.parse_args()
 
     load_env()
@@ -232,7 +236,12 @@ def main():
             except Exception:
                 pass
 
-    query_uc = build_query_pipeline(index=ingest.index)  # type: ignore[arg-type]
+    query_uc = build_query_pipeline(
+        index=ingest.index,  # type: ignore[arg-type]
+        enable_rerank=args.rerank,
+        rerank_multiplier=args.rerank_multiplier,
+        rerank_weight=args.rerank_weight,
+    )
 
     # try to import deepeval evaluator
     try:
@@ -246,7 +255,12 @@ def main():
     ks = [1, 3, 5]
     agg = {k: {"precision": [], "recall": []} for k in ks}
 
+    misses: list[dict] = []
     for itm in items:
+        # Skip if item is not a dictionary (e.g., int from malformed JSON)
+        if not isinstance(itm, dict):
+            print(f"Skipping non-dict item: {itm} (type: {type(itm).__name__})")
+            continue
         question = itm.get("question") or itm.get("query")
         if not question:
             continue
@@ -259,6 +273,19 @@ def main():
             agg[k]["precision"].append(p)
             agg[k]["recall"].append(r)
 
+        if args.diagnose > 0:
+            top1 = preds[0] if preds else None
+            hit = 1 if top1 in ground_truth else 0
+            misses.append(
+                {
+                    "hit": hit,
+                    "query": question,
+                    "query_id": itm.get("query_id"),
+                    "top1": top1,
+                    "ground_truth": list(ground_truth),
+                }
+            )
+
     # compute averages
     summary = {}
     for k in ks:
@@ -269,6 +296,13 @@ def main():
 
     print("Evaluation summary:")
     print(json.dumps(summary, indent=2))
+
+    if args.diagnose > 0 and misses:
+        misses.sort(key=lambda x: x["hit"])
+        print("\nWorst queries (top-1 misses):")
+        for row in misses[: args.diagnose]:
+            print(f"- query_id={row['query_id']} top1={row['top1']} gt={row['ground_truth']}")
+            print(f"  query={row['query']}")
 
 
 if __name__ == "__main__":

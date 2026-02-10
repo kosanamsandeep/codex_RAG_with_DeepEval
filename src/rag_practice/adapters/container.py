@@ -27,6 +27,18 @@ def build_ingest_pipeline(
     return IngestDocuments(loader=loader, chunker=chunker, embedder=embedder, index=index)
 
 
-def build_query_pipeline(index: FaissInMemoryIndex) -> QueryRag:
+def build_query_pipeline(
+    index: FaissInMemoryIndex,
+    *,
+    enable_rerank: bool = False,
+    rerank_multiplier: int = 3,
+    rerank_weight: float = 0.35,
+) -> QueryRag:
     embedder = OpenAITextEmbedder()
-    return QueryRag(embedder=embedder, index=index)
+    return QueryRag(
+        embedder=embedder,
+        index=index,
+        enable_rerank=enable_rerank,
+        rerank_multiplier=rerank_multiplier,
+        rerank_weight=rerank_weight,
+    )

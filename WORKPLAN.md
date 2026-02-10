@@ -2,7 +2,7 @@
 
 **Last Updated**: February 10, 2026  
 **Current Branch**: `table_support_rag` (ready for merge to master)  
-**Project Status**: Phases 1-5 Complete, Phase 6 Planning
+**Project Status**: Phases 1-6 Complete, Phase 7 Planning
 
 ---
 
@@ -55,6 +55,8 @@
 - [x] `scripts/eval_retriever_deepeval.py`
 - [x] Precision@k, Recall@k metrics
 - [x] Deepeval framework integration
+- [x] Rerank evaluation flags (`--rerank`, `--rerank-weight`, `--rerank-multiplier`)
+- [x] Diagnostics for worst misses (`--diagnose`)
 
 **Example Results**:
 ```json
@@ -71,22 +73,33 @@
 - [x] Metadata filtering
 - [x] GPT-4 answer generation
 - [x] Error handling & fallbacks
+- [x] Table chunks rendered into text for LLM context/citations
+- [x] Reranker toggle in UI
 
-### ⏳ Phase 6: Enhanced Filtering (IN PROGRESS)
+### ✅ Phase 6: Retrieval Quality Improvements (COMPLETE)
+
+**Completed**:
+- [x] Metadata-aware embeddings (source/page/type appended)
+- [x] Table-aware embedding text generation
+- [x] Optional lightweight reranker for top-1 precision
+- [x] Evaluation query generation aligned to chunk content
+- [x] Table content surfaced in retriever results
+- [x] Layout-aware PDF extraction via `pdfplumber` (fallback to `pypdf`)
+
+### ⏳ Phase 7: Enhanced Filtering (PLANNING)
 
 **Planned**:
 - [ ] Similarity threshold filtering (sidebar control)
 - [ ] Filter by source document
 - [ ] Filter by page range
 - [ ] Filter by chunk type (text vs. table)
-
 ---
 
 ## Documentation Status
 
 ### ✅ README
 
-**File**: `README_NEW.md` (comprehensive, 600+ lines)
+**File**: `README.md` (comprehensive, updated)
 **Sections**:
 - Features, Architecture
 - Data Handling (text, tables, images)
@@ -126,9 +139,9 @@ This document. Comprehensive project tracking.
 ## Metrics
 
 **Retrieval** (current):
-- Recall excellent (all relevant items found)
-- Precision drops at higher k (many non-relevant items)
-- Improvement: Implement similarity threshold filtering
+- Reranker improves top-1 precision significantly
+- Recall remains strong at k=5
+- Next: similarity threshold filtering and query expansion
 
 **Processing**:
 - 2 PDFs → 17 chunks in < 1 second

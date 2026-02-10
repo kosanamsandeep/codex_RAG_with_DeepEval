@@ -37,6 +37,10 @@ A comprehensive Retrieval-Augmented Generation (RAG) system built with LangChain
 - **Similarity Thresholding**: Filter retrieved results by FAISS distance score
 - **Retrieval Evaluation**: Precision@k and Recall@k metrics using deepeval
 - **Chat History**: Multi-turn conversation with maintained context
+- **Metadata-Aware Embeddings**: Embedding text includes source/page/type to reduce near-duplicate collisions
+- **Table-Aware Context**: Table chunks are rendered to text for LLM context and citations
+- **Optional Reranking**: Lightweight lexical reranker to improve top-1 accuracy
+- **Layout-Aware PDF Extraction**: Optional `pdfplumber` improves table text order in complex PDFs
 
 ---
 
@@ -46,6 +50,7 @@ A comprehensive Retrieval-Augmented Generation (RAG) system built with LangChain
 src/rag_practice/
 ├── domain/
 │   ├── models.py          # Core dataclasses (Document, Chunk, TableRef, QueryResult)
+│   ├── text_utils.py      # Table rendering + embedding/query text helpers
 │   └── ports.py           # Abstract interfaces (VectorIndex, Embedder)
 ├── adapters/
 │   ├── chunking.py        # Text splitting & table extraction logic
@@ -54,7 +59,7 @@ src/rag_practice/
 │   ├── openai_embedder.py # OpenAI embedding adapter
 │   └── container.py       # Dependency injection / service building
 └── application/
-    └── use_cases.py       # Business logic (IngestUseCase, QueryUseCase)
+    └── use_cases.py       # Business logic (IngestDocuments, QueryRag)
 
 scripts/
 ├── ingest.py              # CLI: Load PDFs, chunk, embed, index
@@ -92,6 +97,7 @@ chunk text sections recursively → embed → store in FAISS
 ```
 
 **Implementation** (`chunking.py`):
+- Uses `pdfplumber` for layout-aware text/table extraction when available (falls back to `pypdf`).
 - `MetadataAwareChunker.chunk()`: Main entry point
 - `_chunk_document()`: Process each page
 - `RecursiveCharacterTextSplitter`: Split on `\n\n`, `\n`, ` `, `` (character-level fallback)
@@ -246,7 +252,38 @@ class ImageRef:
 - Python 3.11+
 - OpenAI API key
 
-### Installation
+### Simple Install
+
+1. Create a virtual environment:
+```bash
+python -m venv .venv
+```
+
+2. Activate it:
+```bash
+# Windows
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate
+```
+
+3. Install dependencies:
+```bash
+pip install -e ".[dev,eval]"
+```
+
+4. Create `.env`:
+```bash
+OPENAI_API_KEY=sk-...
+```
+
+5. Add PDFs to ingest:
+```bash
+cp /path/to/documents/*.pdf data/processed/
+```
+
+### Installation (Alternate)
 
 1. Clone and enter the repo:
 ```bash
@@ -288,6 +325,7 @@ python scripts/ingest.py
 - `data/index/faiss.index` — Vector index
 - `data/index/chunks.pkl` — Serialized chunks with metadata
 - `data/processed/images/` — Extracted images
+- `data/index/manifest.json` — Tracks ingested PDFs for incremental updates
 
 **What happens**:
 - Loads all PDFs from `data/processed/*.pdf`
@@ -296,6 +334,10 @@ python scripts/ingest.py
 - Detects and extracts tables as structured data
 - Embeds all chunks with OpenAI
 - Stores vectors in FAISS
+- Automatically ingests only new PDFs on subsequent runs (rebuilds if files changed/removed)
+
+**First-time run**:
+- If the index is missing, the app auto-builds it and shows a “first-time data load” message in the UI.
 
 ### 2. Query (CLI)
 ```bash
@@ -304,6 +346,9 @@ python scripts/query.py "What is in the table?"
 
 # With options
 python scripts/query.py "Your question" --top-k 5 --source-id basic-text.pdf
+
+# With reranking enabled
+python scripts/query.py "Your question" --rerank
 ```
 
 **Output**: Retrieved chunks with similarity scores
@@ -323,6 +368,7 @@ streamlit run scripts/chat_ui_streamlit.py
   - Chunk text
   - Similarity score
   - Content type (text or table)
+  - Table rows rendered into text for readability
 
 ### 4. Evaluation
 ```bash
@@ -333,6 +379,12 @@ python scripts/generate_eval_set.py --metadata data/index/chunks.pkl --out-dir d
 python scripts/eval_retriever_deepeval.py \
   --queries data/index/eval/eval_queries.jsonl \
   --qrels data/index/eval/eval_qrels.jsonl
+
+# Evaluate with reranker and diagnostics
+python scripts/eval_retriever_deepeval.py \
+  --queries data/index/eval/eval_queries.jsonl \
+  --qrels data/index/eval/eval_qrels.jsonl \
+  --rerank --diagnose 10
 ```
 
 ---
@@ -396,11 +448,11 @@ Core data models (frozen dataclasses):
 
 ### `src/rag_practice/application/use_cases.py`
 
-**`IngestUseCase`**:
+**`IngestDocuments`**:
 - `execute() -> None`
   - Load documents → chunk → embed → index
 
-**`QueryUseCase`**:
+**`QueryRag`**:
 - `execute(question, top_k, filters) -> Sequence[QueryResult]`
   - Embed question → search FAISS → return results
 
@@ -436,6 +488,12 @@ python scripts/eval_retriever_deepeval.py \
 - `p@1`: Precision at top-1 (is the #1 result relevant?)
 - `r@1`: Recall at top-1 (is relevant result in top-1?)
 - `p@3`, `r@3`, `p@5`, `r@5`: Same for k=3 and k=5
+
+**Optional flags**:
+- `--rerank`: Enable lightweight reranker
+- `--rerank-weight`: Control rerank weight (0-1)
+- `--rerank-multiplier`: Control pre-retrieval pool size
+- `--diagnose N`: Print worst N top-1 misses
 
 **Example Output**:
 ```json
@@ -489,6 +547,7 @@ Open `http://localhost:8501` in your browser.
 - **Force fresh ingest**: Checkbox to skip persisted index
 - **Reload Index**: Button to reload FAISS index
 - **Show raw chunks**: Debug view of retrieved chunks
+- **Enable reranker**: Toggle to improve top-1 precision
 
 **Metadata-Based Filtering** (sidebar):
 - Filter by source document (optional)
@@ -498,6 +557,9 @@ Open `http://localhost:8501` in your browser.
 **Similarity Thresholding**:
 - Configurable FAISS distance threshold
 - Only show results below threshold (default: no filter)
+
+**Table Context Rendering**:
+- Table chunks are rendered into text for LLM context and citations
 
 ### Example Workflow
 

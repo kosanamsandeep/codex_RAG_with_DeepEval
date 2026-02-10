@@ -8,6 +8,11 @@ from typing import Iterable, Sequence
 from PIL import Image
 from pypdf import PdfReader
 
+try:
+    import pdfplumber  # type: ignore
+except Exception:  # pragma: no cover - optional dependency
+    pdfplumber = None
+
 from rag_practice.domain.models import Document, ImageRef, PageContent
 
 
@@ -23,13 +28,34 @@ class PdfDocumentLoader:
             documents.append(self._load_single(path))
         return documents
 
+    def load_paths(self, pdf_paths: Sequence[Path]) -> Sequence[Document]:
+        documents: list[Document] = []
+        for path in pdf_paths:
+            documents.append(self._load_single(path))
+        return documents
+
     def _load_single(self, path: Path) -> Document:
         reader = PdfReader(str(path))
+        plumber_pdf = pdfplumber.open(str(path)) if pdfplumber else None
         pages: list[PageContent] = []
         for page_index, page in enumerate(reader.pages, start=1):
             text = page.extract_text() or ''
+            if plumber_pdf:
+                try:
+                    ppage = plumber_pdf.pages[page_index - 1]
+                    text = ppage.extract_text(x_tolerance=1, y_tolerance=1) or text
+                    tables = ppage.extract_tables() or []
+                    if tables:
+                        text = self._append_tables_to_text(text, tables)
+                except Exception:
+                    pass
             image_refs = list(self._extract_images(page, path.stem, page_index))
             pages.append(PageContent(page=page_index, text=text, image_refs=image_refs))
+        if plumber_pdf:
+            try:
+                plumber_pdf.close()
+            except Exception:
+                pass
         return Document(source_id=path.name, pages=pages)
 
     def _extract_images(self, page, source_id: str, page_index: int) -> Iterable[ImageRef]:
@@ -69,3 +95,29 @@ class PdfDocumentLoader:
         except Exception:
             return None
         return None
+
+    def _append_tables_to_text(self, text: str, tables: Sequence[Sequence[Sequence[str | None]]]) -> str:
+        """
+        Render extracted tables into text lines to improve downstream table detection.
+        """
+        rendered_tables: list[str] = []
+        for table in tables:
+            lines: list[str] = []
+            for row in table:
+                if not row:
+                    continue
+                cells = [self._clean_cell(c) for c in row]
+                if any(cells):
+                    lines.append("  ".join(cells))
+            if len(lines) >= 2:
+                rendered_tables.append("\n".join(lines))
+        if not rendered_tables:
+            return text
+        parts = [text.strip()] if text.strip() else []
+        parts.extend(rendered_tables)
+        return "\n\n".join(parts).strip()
+
+    def _clean_cell(self, cell: str | None) -> str:
+        if cell is None:
+            return ""
+        return " ".join(str(cell).split())
