@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/rag_practice/__init__.py
+src/rag_practice.egg-info/PKG-INFO
+src/rag_practice.egg-info/SOURCES.txt
+src/rag_practice.egg-info/dependency_links.txt
+src/rag_practice.egg-info/requires.txt
+src/rag_practice.egg-info/top_level.txt
+src/rag_practice/adapters/__init__.py
+src/rag_practice/application/__init__.py
+src/rag_practice/application/use_cases.py
+src/rag_practice/domain/__init__.py
+src/rag_practice/domain/models.py
+src/rag_practice/domain/ports.py
+tests/test_smoke.py

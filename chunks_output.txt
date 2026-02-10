@@ -1,0 +1,166 @@
+====================================================================================================
+DOCUMENT CHUNKS ANALYSIS
+====================================================================================================
+
+Total chunks: 8
+
+
+====================================================================================================
+SOURCE: basic-text.pdf
+====================================================================================================
+Total chunks from this source: 2
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #1
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:1
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1'}
+
+Text Content:
+Sample Document for PDF Testing
+Introduction
+This is a simple document created to test basic PDF functionality. It includes various text formatting
+options to ensure proper rendering in PDF readers.
+Text Formatting Examples
+1. Bold text is used for emphasis.
+2. Italic text can be used for titles or subtle emphasis.
+3. Strikethrough is used to show deleted text.
+Lists
+Here's an example of an unordered list:
+Item 1
+Item 2
+Item 3
+And here's an ordered list:
+1. First item
+2. Second item
+3. Third item
+Quote
+This is an example of a block quote. It can be used to highlight important information or
+citations.
+Table
+Header 1 Header 2 Header 3
+Row 1, Col 1 Row 1, Col 2 Row 1, Col 3
+Row 2, Col 1 Row 2, Col 2 Row 2, Col 3
+
+----------------------------------------------------------------------------------------------------
+CHUNK #2
+----------------------------------------------------------------------------------------------------
+Chunk ID: basic-text.pdf:p1:2
+Page: 1
+Section: None
+Image References: []
+Extra Metadata: {'source_id': 'basic-text.pdf', 'page': '1'}
+
+Text Content:
+Table
+Header 1 Header 2 Header 3
+Row 1, Col 1 Row 1, Col 2 Row 1, Col 3
+Row 2, Col 1 Row 2, Col 2 Row 2, Col 3
+This document demonstrates various formatting options that should translate well to PDF format.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resources.
+
+====================================================================================================
+SOURCE: image-doc.pdf
+====================================================================================================
+Total chunks from this source: 6
+
+
+----------------------------------------------------------------------------------------------------
+CHUNK #1
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p1:1
+Page: 1
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p1_1.jpeg', page=1, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '1'}
+
+Text Content:
+Sample Team
+Prepared By:
+sample-files.com
+Image-Heavy
+PDF
+Website:
+
+----------------------------------------------------------------------------------------------------
+CHUNK #2
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p2:1
+Page: 2
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p2_1.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_2.jpeg', page=2, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p2_3.jpeg', page=2, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '2'}
+
+Text Content:
+Nature Landscape
+A beautiful landscape showcasing the wonders of
+nature.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #3
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p3:1
+Page: 3
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p3_1.jpeg', page=3, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '3'}
+
+Text Content:
+City Skyline
+A high-resolution image of a bustling city skyline at
+night.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #4
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p4:1
+Page: 4
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p4_1.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_2.jpeg', page=4, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p4_3.jpeg', page=4, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '4'}
+
+Text Content:
+Wildlife Photography
+An up-close capture of wildlife in their natural habitat.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #5
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p5:1
+Page: 5
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p5_1.jpeg', page=5, caption=None), ImageRef(path='data\\processed\\images\\image-doc_p5_2.jpeg', page=5, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '5'}
+
+Text Content:
+Space Exploration
+An artistic representation of space exploration and
+galaxies.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+----------------------------------------------------------------------------------------------------
+CHUNK #6
+----------------------------------------------------------------------------------------------------
+Chunk ID: image-doc.pdf:p6:1
+Page: 6
+Section: None
+Image References: [ImageRef(path='data\\processed\\images\\image-doc_p6_1.jpeg', page=6, caption=None)]
+Extra Metadata: {'source_id': 'image-doc.pdf', 'page': '6'}
+
+Text Content:
+Underwater World
+A breathtaking view of marine life deep beneath the
+ocean.
+This sample PDF file is provided by Sample-Files.com. Visit us for more sample files and resource.
+
+
+====================================================================================================
+END OF CHUNKS REPORT
+====================================================================================================
