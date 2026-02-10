@@ -11,10 +11,53 @@ from rag_practice.domain.models import ChunkMetadata, Document, DocumentChunk, I
 
 @dataclass(frozen=True, slots=True)
 class MetadataAwareChunker:
+    """
+    Chunk documents into smaller pieces with metadata awareness.
+    
+    Handles three types of content:
+    1. Text: Split using RecursiveCharacterTextSplitter
+    2. Tables: Detected and extracted as structured TableRef objects
+    3. Images: Tracked via references in chunk metadata
+    
+    Attributes:
+        chunk_size (int): Target chunk size in characters (default: 800)
+        chunk_overlap (int): Overlap between chunks in characters (default: 120)
+    
+    Example:
+        ```python
+        chunker = MetadataAwareChunker(chunk_size=800, chunk_overlap=120)
+        documents = [Document(...), ...]
+        chunks = chunker.chunk(documents)
+        ```
+    """
     chunk_size: int = 800
     chunk_overlap: int = 120
 
     def chunk(self, documents: Sequence[Document]) -> Sequence[DocumentChunk]:
+        """
+        Chunk all documents into smaller pieces.
+        
+        Process:
+        1. For each page in each document:
+           a. Detect and extract tables from page text
+           b. Split remaining text into chunks
+           c. Create text chunks with metadata
+           d. Create table chunks with structured data
+        2. Preserve image references in all chunks
+        
+        Args:
+            documents: Sequence of Document objects to chunk
+        
+        Returns:
+            Sequence of DocumentChunk objects
+        
+        Example:
+            ```python
+            documents = [pdf_doc_1, pdf_doc_2]
+            chunks = chunker.chunk(documents)
+            # chunks contains both text and table chunks with metadata
+            ```
+        """
         splitter = RecursiveCharacterTextSplitter(
             chunk_size=self.chunk_size,
             chunk_overlap=self.chunk_overlap,
@@ -29,6 +72,22 @@ class MetadataAwareChunker:
         document: Document,
         splitter: RecursiveCharacterTextSplitter,
     ) -> Iterable[DocumentChunk]:
+        """
+        Chunk a single document.
+        
+        Per-page process:
+        1. Extract tables and text sections
+        2. Chunk text sections recursively
+        3. Create text chunks
+        4. Create table chunks (text="" for tables)
+        
+        Args:
+            document: Document to chunk
+            splitter: RecursiveCharacterTextSplitter instance
+        
+        Yields:
+            DocumentChunk objects (both text and table)
+        """
         for page in document.pages:
             # Step 1: Detect and extract tables from page text
             text_sections, tables = self._extract_tables_from_text(page.text, document.source_id, page.page)
@@ -71,17 +130,36 @@ class MetadataAwareChunker:
                 yield DocumentChunk(chunk_id=chunk_id, text="", metadata=metadata, tables=(table,))
 
     def _normalize_images(self, images: Sequence[ImageRef]) -> Sequence[ImageRef]:
+        """Normalize image references (currently identity function)."""
         return images
+    
     def _extract_tables_from_text(
         self, text: str, source_id: str, page_num: int
     ) -> tuple[list[str], list[TableRef]]:
         """
-        Extract tables from text while preserving non-table content.
+        Extract structured tables from text while preserving text sections.
+        
+        Algorithm:
+        1. Split text into lines
+        2. Identify potential table lines (multi-word, space-separated)
+        3. Group consecutive table lines
+        4. Parse headers and rows
+        5. Return remaining text + extracted tables
+        
+        Detection Heuristics (in _is_potential_table_line):
+        - 2+ words per line
+        - Each word < 100 characters
+        - Line length > 10 characters
+        
+        Args:
+            text: Page text to extract tables from
+            source_id: Document identifier (for table IDs)
+            page_num: Page number (for table IDs and metadata)
         
         Returns:
-            Tuple of (text_sections, tables) where:
-            - text_sections: List of text portions with tables removed
-            - tables: List of extracted TableRef objects
+            Tuple of:
+            - text_sections: List of text strings (tables removed)
+            - tables: List of TableRef objects
         """
         tables: list[TableRef] = []
         lines = text.split('\n')
@@ -123,7 +201,21 @@ class MetadataAwareChunker:
         return text_sections, tables
 
     def _is_potential_table_line(self, line: str) -> bool:
-        """Check if a line looks like it could be part of a table."""
+        """
+        Heuristic to identify if a line looks like table content.
+        
+        Criteria:
+        - Non-empty after stripping
+        - 2+ words
+        - All words < 100 characters (filters prose paragraphs)
+        - Line length > 10 characters
+        
+        Args:
+            line: Text line to check
+        
+        Returns:
+            True if line could be a table row, False otherwise
+        """
         if not line.strip():
             return False
         
@@ -142,7 +234,21 @@ class MetadataAwareChunker:
     def _extract_table_lines(
         self, lines: list[str], start_idx: int
     ) -> tuple[list[str], int]:
-        """Extract consecutive table lines starting from start_idx."""
+        """
+        Extract consecutive table lines starting from start_idx.
+        
+        Collects contiguous lines that match the table line pattern.
+        Stops on empty lines or non-table content.
+        
+        Args:
+            lines: Full list of text lines
+            start_idx: Starting index for table extraction
+        
+        Returns:
+            Tuple of:
+            - table_lines: List of consecutive table lines
+            - next_idx: Index to resume searching (after last table line)
+        """
         table_lines = [lines[start_idx]]
         i = start_idx + 1
         
@@ -163,7 +269,24 @@ class MetadataAwareChunker:
     def _parse_table(
         self, table_lines: list[str], source_id: str, page_num: int, table_idx: int
     ) -> TableRef | None:
-        """Parse table lines into a TableRef object."""
+        """
+        Parse table lines into a TableRef object.
+        
+        Process:
+        1. Extract headers from first line
+        2. Parse remaining lines as data rows
+        3. Match cells to headers by position
+        4. Return structured TableRef
+        
+        Args:
+            table_lines: List of table row strings
+            source_id: Document identifier
+            page_num: Page number
+            table_idx: Table counter on page
+        
+        Returns:
+            TableRef object or None if parsing fails
+        """
         if len(table_lines) < 2:
             return None
         
@@ -202,8 +325,18 @@ class MetadataAwareChunker:
     def _smart_split_table_line(self, line: str) -> list[str]:
         """
         Smart split for table lines.
-        First try to split by multiple spaces (standard table format).
-        If that doesn't work well, fall back to splitting by single space.
+        
+        Strategy:
+        1. First try to split by multiple spaces (2+)
+           - Common in PDF tables with aligned columns
+        2. Fall back to single space split
+           - For compact or CSV-style tables
+        
+        Args:
+            line: Table line to parse into columns
+        
+        Returns:
+            List of cell values (stripped)
         """
         line = line.strip()
         

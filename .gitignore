@@ -11,3 +11,4 @@ build/
 .vscode/
 data/raw/
 data/processed/
+.deepeval
