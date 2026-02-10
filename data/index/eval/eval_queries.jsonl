@@ -1,7 +1,71 @@
 {"query_id": "basic-text.pdf:p1:1", "query": "Sample Document for PDF Testing"}
-{"query_id": "image-doc.pdf:p1:1", "query": "Sample Team"}
-{"query_id": "image-doc.pdf:p2:1", "query": "Nature Landscape"}
-{"query_id": "image-doc.pdf:p3:1", "query": "City Skyline"}
-{"query_id": "image-doc.pdf:p4:1", "query": "Wildlife Photography"}
-{"query_id": "image-doc.pdf:p5:1", "query": "Space Exploration"}
-{"query_id": "image-doc.pdf:p6:1", "query": "Underwater World"}
+{"query_id": "basic-text.pdf:p1:table1", "query": "This | is | a | simple | document | created | to | test | basic | PDF | functionality. | It | includes | various | text | formatting"}
+{"query_id": "basic-text.pdf:p1:table2", "query": "And | here's | an | ordered | list:"}
+{"query_id": "basic-text.pdf:p1:table3", "query": "Header | 1 | Header | 2 | Header | 3"}
+{"query_id": "image-doc.pdf:p1:1", "query": "sample-files.com"}
+{"query_id": "image-doc.pdf:p1:table1", "query": "Sample | Team"}
+{"query_id": "image-doc.pdf:p2:table1", "query": "Nature | Landscape"}
+{"query_id": "image-doc.pdf:p3:table1", "query": "City | Skyline"}
+{"query_id": "image-doc.pdf:p4:table1", "query": "Wildlife | Photography"}
+{"query_id": "image-doc.pdf:p5:table1", "query": "Space | Exploration"}
+{"query_id": "image-doc.pdf:p6:table1", "query": "Underwater | World"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:1", "query": "169002/76691539-20980/1-7/RESTS/02-02"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:3", "query": "01-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:4", "query": "02-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:5", "query": "BANK/130625442837/YBLd910956697b0438aa4ad68794bf7"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:table1", "query": "MR.SANDEEP | KUMAR | KOSANAM"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:table2", "query": "TELANGANA | - | INDIA | - | 500072"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:table3", "query": "25,000.00 | 29,617.48"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p1:table4", "query": "222.00 | 51,493.48"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:1", "query": "05-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:2", "query": "BANK/600662168112/GPG2026010693397608673031329779"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:3", "query": "07-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:4", "query": "BANK/776350798598/YBL17ec6c42ebc74b2d85254d3619024"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:5", "query": "Bank/393908643114/YBL99b07be8c7294821b4d0ddc5746cd"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:table1", "query": "Statement | of | Transactions | in | Savings | Account | XXXXXXXX8648 | in | INR | for | the | period | January | 01, | 2026 | - | January | 31, | 2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:table2", "query": "4,153.00 | 6,915.48"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p2:table3", "query": "630.00 | 27,067.68"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:1", "query": "09-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:2", "query": "Mahi/588959961004/AXL3babf78e806b492fa29378cc5e1c69"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:3", "query": "10-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:4", "query": "BANK/726641548975/GPG2026011284435206823865504636"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:5", "query": "13-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:table1", "query": "Statement | of | Transactions | in | Savings | Account | XXXXXXXX8648 | in | INR | for | the | period | January | 01, | 2026 | - | January | 31, | 2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:table2", "query": "452.00 | 23,758.68"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:table3", "query": "928.00 | 20.68"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p3:table4", "query": "210.00 | 19,238.68"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:1", "query": "14-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:2", "query": "15-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:3", "query": "UPI/AVENUE FOO/avenuefoodplaz/Generating/HDFC"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:4", "query": "BANK/681834833096/GPG2026011973787065549690605363"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:table1", "query": "Statement | of | Transactions | in | Savings | Account | XXXXXXXX8648 | in | INR | for | the | period | January | 01, | 2026 | - | January | 31, | 2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:table2", "query": "120.00 | 19,118.68"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p4:table3", "query": "60.00 | 29,895.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:1", "query": "21-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:2", "query": "23-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:3", "query": "UPI/COUNTER NO/Vyapar.1727211/Payment fr/HDFC"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:4", "query": "27-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:5", "query": "27-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:6", "query": "28-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:table1", "query": "Statement | of | Transactions | in | Savings | Account | XXXXXXXX8648 | in | INR | for | the | period | January | 01, | 2026 | - | January | 31, | 2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:table2", "query": "25,000.00 | 44,811.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:table3", "query": "5,000.00 | 25,076.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:table4", "query": "40.00 | 19,741.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p5:table5", "query": "219.00 | 19,442.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:1", "query": "28-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:2", "query": "29-01-2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:3", "query": "UPI/ETIKALA CH/8466909738-3@y/Payment fr/State"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:4", "query": "Sincerely,"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:table1", "query": "Statement | of | Transactions | in | Savings | Account | XXXXXXXX8648 | in | INR | for | the | period | January | 01, | 2026 | - | January | 31, | 2026"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:table2", "query": "120.00 | 19,322.14"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:table3", "query": "80.00 | 23,739.63"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p6:table4", "query": "Team | ICICI | Bank"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:1", "query": "https://www.icicibank.com/notice-board"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:3", "query": "department."}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:4", "query": "www.icicibank.com"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:5", "query": "SR244554715"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:table1", "query": "Customers | with | Pradhan | Mantri | Jan | Dhan | Yojana | (PMJDY) | Account, | having | RuPay | PMJDY | Debit | Card | are | eligible | for | Personal | Accident | Insurance | Cover | under | the | "}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:table2", "query": "l | ICICI | Bank | will | follow | the | Customer | Relationship | Policy | to | address | the | customer | risks | arising | out | of"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:table3", "query": "l | Grievance | Redressal | / | Complaints | / | Escalations: | If | you | are | not | satisfied | with | our | services, | you | may | register | your"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:table4", "query": "l | PMJJBY | Insurance: | The | insurance | premium | is | collected | on | behalf | of | ICICI | Prudential | Life | Insurance | Company | Limited"}
+{"query_id": "Statement_2026MTH01_473540197_unlocked.pdf:p7:table5", "query": "Category | of | service: | Banking | & | Financial | Services."}

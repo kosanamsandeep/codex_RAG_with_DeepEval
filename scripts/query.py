@@ -19,6 +19,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--source-id", dest="source_id", help="Optional source_id filter")
     parser.add_argument("--page", type=int, dest="page", help="Optional page filter")
     parser.add_argument(
+        "--rerank",
+        action="store_true",
+        help="Enable lightweight reranker",
+    )
+    parser.add_argument(
         "--persist-dir",
         default="data/index",
         help="Directory to store/load FAISS index and metadata",
@@ -52,7 +57,7 @@ def main() -> None:
         if not args.no_persist:
             ingest.index.save(Path(index_path), Path(meta_path))  # type: ignore[attr-defined]
 
-    query_use_case = build_query_pipeline(index=ingest.index)  # type: ignore[attr-defined]
+    query_use_case = build_query_pipeline(index=ingest.index, enable_rerank=args.rerank)  # type: ignore[attr-defined]
     filters = {}
     if args.source_id:
         filters["source_id"] = args.source_id

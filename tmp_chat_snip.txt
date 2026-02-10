@@ -1,0 +1,12 @@
+tinue
+            
+            retrieved_filtered.append(chunk)
+        
+        retrieved = retrieved_filtered if retrieved_filtered else retrieved
+
+        if not retrieved:
+            answer = "❌ No relevant documents found after filtering. Please adjust your filters or try a different question."
+            citations = {}
+        else:
+            # Display result count
+            st.info(f"
